@@ -1,9 +1,12 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-});
+
+console.log('All env vars:', Object.keys(process.env));
+console.log('MONGO_URI exists:', !!process.env.MONGO_URI);
+console.log('MONGO_URI first few chars:', process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 20) + '...' : 'undefined');
+
+
+mongoose.connect(process.env.MONGO_URI);
 
 let Person;
 
