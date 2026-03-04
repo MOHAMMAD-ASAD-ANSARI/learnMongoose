@@ -6,7 +6,7 @@ console.log('MONGO_URI exists:', !!process.env.MONGO_URI);
 console.log('MONGO_URI first few chars:', process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 20) + '...' : 'undefined');
 
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect("mongodb+srv://md9asad6_db_user:LTyvA5oZfgDHVObW@nova.n5txuei.mongodb.net/?appName=NOVA");
 
 let Person;
 
