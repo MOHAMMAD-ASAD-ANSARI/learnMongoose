@@ -5,8 +5,9 @@ console.log('All env vars:', Object.keys(process.env));
 console.log('MONGO_URI exists:', !!process.env.MONGO_URI);
 console.log('MONGO_URI first few chars:', process.env.MONGO_URI ? process.env.MONGO_URI.substring(0, 20) + '...' : 'undefined');
 
-
 mongoose.connect(process.env.MONGO_URI);
+
+// mongoose.connect("mongodb+srv://md9asad6_db_user:LTyvA5oZfgDHVObW@nova.n5txuei.mongodb.net/?appName=NOVA");
 
 let PersonSchema = new mongoose.Schema({
   name :{
@@ -21,8 +22,24 @@ let Person = mongoose.model('Person',PersonSchema);
 
 console.log("created person------------------");
 
+// const createAndSavePerson = (done) => {
+//   console.log("func call............................");
+//   let person = new Person({
+//     name: "Asad",
+//     age: 20,
+//     favoriteFoods: ["Mango"]
+//   });
+
+//   person.save(function(err, data) {
+//     if (err) return done(err);
+//     done(null, data);
+//   });
+// };
+
+
 const createAndSavePerson = (done) => {
-  console.log("func call............................");
+  console.log("Function called");
+
   let person = new Person({
     name: "Asad",
     age: 20,
@@ -30,7 +47,12 @@ const createAndSavePerson = (done) => {
   });
 
   person.save(function(err, data) {
-    if (err) return done(err);
+    if (err) {
+      console.log("ERROR:", err);
+      return done(err);
+    }
+
+    console.log("Saved to DB:", data);
     done(null, data);
   });
 };
