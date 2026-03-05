@@ -18,14 +18,11 @@ let PersonSchema = new mongoose.Schema({
 });
 let Person = mongoose.model('Person',PersonSchema);
 
-let person = new Person({
-  name: "Asad",
-  age:20,
-  favoriteFoods: ["Mango"]
-});
+
 console.log("created person------------------");
 
 const createAndSavePerson = (done) => {
+  console.log("func call............................");
   let person = new Person({
     name: "Asad",
     age: 20,
