@@ -24,8 +24,13 @@ let person = new Person({
   favoriteFoods: ["Mango"]
 });
 const createAndSavePerson = function(done){
+  console.log("entered the create save person fucntion------------------");
   person.save(function(err,data){
-    if(err) return done(err);
+    if(err){
+      console.log("Save error:", err);
+      return done(err);
+    }
+    console.log("Saved successfully:", data);
     done(null,data);
   });
 };
