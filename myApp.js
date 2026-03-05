@@ -8,7 +8,15 @@ console.log('MONGO_URI first few chars:', process.env.MONGO_URI ? process.env.MO
 
 mongoose.connect(process.env.MONGO_URI);
 
-let Person;
+let PersonSchema = new mongoose.Schema({
+  name :{
+    type : String,
+    required: true
+  },
+  age : Number,
+  favoriteFoods:[String]
+});
+module.exports = mongoose.model('Person',PersonSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
