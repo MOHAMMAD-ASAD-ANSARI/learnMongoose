@@ -64,27 +64,8 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  console.log("Function called2");
-
-  let persons = new Person([{
-    name: "Anas",
-    age: 21,
-    favoriteFoods: ["Mango dashahri"]
-  },
-  {
-    name: "faheem",
-    age: 19,
-    favoriteFoods: ["apple"]
-  }]
-);
-
-  persons.save(function(err, data) {
-    if (err) {
-      console.log("ERROR:", err);
-      return done(err);
-    }
-
-    console.log("Saved to DB:", data);
+  Person.create(arrayOfPeople, function(err, data) {
+    if (err) return done(err);
     done(null, data);
   });
 };
