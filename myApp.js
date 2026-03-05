@@ -66,7 +66,7 @@ const createAndSavePerson = (done) => {
 const createManyPeople = (arrayOfPeople, done) => {
   console.log("Function called2");
 
-  let persons = new Person({
+  let persons = new Person([{
     name: "Anas",
     age: 21,
     favoriteFoods: ["Mango dashahri"]
@@ -75,7 +75,7 @@ const createManyPeople = (arrayOfPeople, done) => {
     name: "faheem",
     age: 19,
     favoriteFoods: ["apple"]
-  }
+  }]
 );
 
   persons.save(function(err, data) {
