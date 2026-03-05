@@ -27,22 +27,6 @@ let Person = mongoose.model('Person',PersonSchema);
 
 
 console.log("created person------------------");
-
-// const createAndSavePerson = (done) => {
-//   console.log("func call............................");
-//   let person = new Person({
-//     name: "Asad",
-//     age: 20,
-//     favoriteFoods: ["Mango"]
-//   });
-
-//   person.save(function(err, data) {
-//     if (err) return done(err);
-//     done(null, data);
-//   });
-// };
-
-
 const createAndSavePerson = (done) => {
   console.log("Function called");
 
@@ -71,7 +55,10 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find(personName,function(err,data){
+    if (err)  return done(err);
+    done(null , data);
+  })
 };
 
 const findOneByFood = (food, done) => {
