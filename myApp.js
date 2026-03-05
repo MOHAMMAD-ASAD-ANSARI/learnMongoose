@@ -23,15 +23,18 @@ let person = new Person({
   age:20,
   favoriteFoods: ["Mango"]
 });
-const createAndSavePerson = function(done){
-  console.log("entered the create save person fucntion------------------");
-  person.save(function(err,data){
-    if(err){
-      console.log("Save error:", err);
-      return done(err);
-    }
-    console.log("Saved successfully:", data);
-    done(null,data);
+console.log("created person------------------");
+
+const createAndSavePerson = (done) => {
+  let person = new Person({
+    name: "Asad",
+    age: 20,
+    favoriteFoods: ["Mango"]
+  });
+
+  person.save(function(err, data) {
+    if (err) return done(err);
+    done(null, data);
   });
 };
 
